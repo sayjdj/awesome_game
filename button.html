@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>도망가는 버튼</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="common.js"></script>
+    <script defer src="button.js"></script>
+    <style>
+        .troll-btn {
+            position: absolute;
+            padding: 20px 40px;
+            font-size: 2rem;
+            background-color: #ff0055;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 5px 5px 0px #880022;
+            transition: transform 0.1s;
+        }
+        .score-board {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 10px;
+            border: 3px solid black;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="rainbow-bg">
+    <button class="back-btn" onclick="location.href='index.html'">🔙 뒤로가기</button>
+    <div class="score-board">분노 게이지: <span id="rageMeter">0</span>%</div>
+
+    <div class="game-container" id="gameArea">
+        <h1 style="position: absolute; top: 100px;">날 잡아보시지!</h1>
+        <button class="troll-btn" id="runawayBtn">클릭해봐! 😜</button>
+    </div>
+</body>
+</html>

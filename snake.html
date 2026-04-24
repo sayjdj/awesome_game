@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>청개구리 뱀 게임</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="common.js"></script>
+    <script defer src="snake.js"></script>
+    <style>
+        .game-layout {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        canvas {
+            background-color: #eee;
+            border: 5px solid #333;
+            border-radius: 10px;
+            box-shadow: 10px 10px 0px #333;
+        }
+        .status-panel {
+            display: flex;
+            justify-content: space-between;
+            width: 400px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            background: white;
+            padding: 10px 20px;
+            border: 3px solid black;
+            border-radius: 10px;
+        }
+        #controlState {
+            color: red;
+            font-weight: bold;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body class="rainbow-bg">
+    <button class="back-btn" onclick="location.href='index.html'">🔙 뒤로가기</button>
+
+    <div class="game-container game-layout">
+        <h1>🐍 청개구리 뱀 게임</h1>
+
+        <div class="status-panel">
+            <div>점수: <span id="score">0</span></div>
+            <div>현재 조작: <span id="controlState">정상</span></div>
+        </div>
+
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+
+        <div class="overlay" id="gameOver">
+            <h2>으앙 쥬금 💀</h2>
+            <p>당신의 하찮은 점수: <span id="finalScore">0</span></p>
+            <button onclick="location.reload()" style="padding:10px; font-size:1.2rem; cursor:pointer;">다시 하기</button>
+        </div>
+    </div>
+</body>
+</html>
