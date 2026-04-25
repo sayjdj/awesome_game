@@ -53,32 +53,46 @@ const ruleText = document.getElementById("ruleText");
 let usedWords = [currentWord];
 
 function updateDisplay() {
-    let displayHTML = "";
+    currentWordDisplay.textContent = "";
     for (let i = 0; i < currentWord.length; i++) {
         if (i === targetCharIndex) {
-            displayHTML += `<span class="target-char">${currentWord[i]}</span>`;
+            const span = document.createElement("span");
+            span.className = "target-char";
+            span.textContent = currentWord[i];
+            currentWordDisplay.appendChild(span);
         } else {
-            displayHTML += currentWord[i];
+            currentWordDisplay.appendChild(document.createTextNode(currentWord[i]));
         }
     }
-    currentWordDisplay.innerHTML = displayHTML;
 }
 
 function changeRule() {
     const rules = ['second_char', 'last_second', 'random_idx'];
     ruleMode = rules[Math.floor(Math.random() * rules.length)];
 
+    ruleText.textContent = "";
+    const b = document.createElement("b");
+
     if (ruleMode === 'second_char') {
         targetCharIndex = 1;
-        ruleText.innerHTML = "규칙: 제시어의 <b style='color:blue;'>'앞에서 두 번째 글자'</b>로 시작하는 3글자 단어!";
+        ruleText.appendChild(document.createTextNode("규칙: 제시어의 "));
+        b.style.color = 'blue';
+        b.textContent = "'앞에서 두 번째 글자'";
     } else if (ruleMode === 'last_second') {
         targetCharIndex = currentWord.length - 2;
         if(targetCharIndex < 0) targetCharIndex = 0;
-        ruleText.innerHTML = "규칙: 제시어의 <b style='color:red;'>'뒤에서 두 번째 글자'</b>로 시작하는 3글자 단어!";
+        ruleText.appendChild(document.createTextNode("규칙: 제시어의 "));
+        b.style.color = 'red';
+        b.textContent = "'뒤에서 두 번째 글자'";
     } else {
         targetCharIndex = Math.floor(Math.random() * currentWord.length);
-        ruleText.innerHTML = `규칙: 랜덤 픽! <b style='color:green;'>'${targetCharIndex+1}번째 글자'</b>로 시작하는 3글자 단어!`;
+        ruleText.appendChild(document.createTextNode("규칙: 랜덤 픽! "));
+        b.style.color = 'green';
+        b.textContent = `'${targetCharIndex+1}번째 글자'`;
     }
+
+    ruleText.appendChild(b);
+    ruleText.appendChild(document.createTextNode("로 시작하는 3글자 단어!"));
     updateDisplay();
 }
 
@@ -118,7 +132,12 @@ function submitWord() {
     feedback.style.color = "green";
     feedback.innerText = "정답!";
     usedWords.push(input);
-    wordHistory.innerHTML += ` <span style='color:#ccc'>-></span> ${input}`;
+
+    const span = document.createElement("span");
+    span.style.color = "#ccc";
+    span.textContent = " ->";
+    wordHistory.appendChild(span);
+    wordHistory.appendChild(document.createTextNode(` ${input}`));
 
     currentWord = input;
     wordInput.value = "";
