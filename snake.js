@@ -36,11 +36,9 @@ function update() {
     }
 
     // 자기 몸 충돌 체크
-    for (let i = 0; i < snake.length; i++) {
-        if (snake[i].x === headX && snake[i].y === headY && snake.length > 1) {
-            gameOver();
-            return;
-        }
+    if (snake.slice(1).some(part => part.x === headX && part.y === headY)) {
+        gameOver();
+        return;
     }
 
     snake.unshift({x: headX, y: headY});
@@ -68,20 +66,17 @@ function draw() {
 
     // 뱀
     ctx.fillStyle = "green";
-    for (let i = 0; i < snake.length; i++) {
-        ctx.fillRect(snake[i].x * gridSize, snake[i].y * gridSize, gridSize - 2, gridSize - 2);
-    }
+    snake.forEach(part => {
+        ctx.fillRect(part.x * gridSize, part.y * gridSize, gridSize - 2, gridSize - 2);
+    });
 }
 
 function spawnApple() {
     apple.x = Math.floor(Math.random() * tileCount);
     apple.y = Math.floor(Math.random() * tileCount);
     // 뱀 몸통에 겹치지 않게
-    for (let part of snake) {
-        if (part.x === apple.x && part.y === apple.y) {
-            spawnApple();
-            break;
-        }
+    if (snake.some(part => part.x === apple.x && part.y === apple.y)) {
+        spawnApple();
     }
 }
 
