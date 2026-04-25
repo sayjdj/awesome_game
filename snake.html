@@ -67,6 +67,15 @@
 
         <canvas id="gameCanvas" width="400" height="400"></canvas>
 
+        <div class="d-pad">
+            <button class="d-btn up" onclick="triggerKey('ArrowUp')">▲</button>
+            <div class="d-pad-middle">
+                <button class="d-btn left" onclick="triggerKey('ArrowLeft')">◀</button>
+                <button class="d-btn right" onclick="triggerKey('ArrowRight')">▶</button>
+            </div>
+            <button class="d-btn down" onclick="triggerKey('ArrowDown')">▼</button>
+        </div>
+
         <div class="overlay" id="gameOver">
             <h2>으앙 쥬금 💀</h2>
             <p>당신의 하찮은 점수: <span id="finalScore">0</span></p>

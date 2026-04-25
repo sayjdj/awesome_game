@@ -163,3 +163,11 @@ function initGame() {
 }
 
 initGame();
+
+// 가상 키보드(D-pad) 트리거 함수
+function triggerKey(keyName) {
+    const event = new KeyboardEvent('keydown', {
+        key: keyName
+    });
+    window.dispatchEvent(event);
+}

@@ -7,7 +7,11 @@ const taunts = [
     "아깝~", "이걸 못 누르네", "화났어?", "진정해~", "우끼끼 🐵"
 ];
 
-btn.addEventListener('mouseover', (e) => {
+function moveButton(e) {
+    if(e.type === 'touchstart') {
+        e.preventDefault(); // 터치 시 클릭으로 이어지는 것 방지
+    }
+
     // 킹받는 버튼 이동 로직
     const maxX = window.innerWidth - btn.offsetWidth;
     const maxY = window.innerHeight - btn.offsetHeight;
@@ -25,9 +29,17 @@ btn.addEventListener('mouseover', (e) => {
     rage += 5;
     rageMeter.innerText = rage;
 
+    // 터치나 마우스 좌표 가져오기
+    let clientX = e.clientX;
+    let clientY = e.clientY;
+    if(e.touches && e.touches.length > 0) {
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
+    }
+
     // 가끔씩 약올리는 멘트 출력 및 화면 흔들림
     if (Math.random() > 0.5) {
-        showTaunt(taunts[Math.floor(Math.random() * taunts.length)], e.clientX, e.clientY);
+        showTaunt(taunts[Math.floor(Math.random() * taunts.length)], clientX || window.innerWidth/2, clientY || window.innerHeight/2);
     }
 
     if (rage % 20 === 0) {
@@ -39,7 +51,10 @@ btn.addEventListener('mouseover', (e) => {
         rage = 0;
         rageMeter.innerText = rage;
     }
-});
+}
+
+btn.addEventListener('touchstart', moveButton, {passive: false});
+btn.addEventListener('mouseover', moveButton);
 
 btn.addEventListener('click', () => {
     // 혹시라도 운 좋게 눌렀을 때
