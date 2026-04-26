@@ -50,7 +50,7 @@ const feedback = document.getElementById("feedback");
 const wordHistory = document.getElementById("wordHistory");
 const ruleText = document.getElementById("ruleText");
 
-let usedWords = [currentWord];
+let usedWords = new Set([currentWord]);
 
 function updateDisplay() {
     let displayHTML = "";
@@ -97,7 +97,7 @@ function submitWord() {
         return;
     }
 
-    if (usedWords.includes(input)) {
+    if (usedWords.has(input)) {
         showError("이미 사용한 단어입니다!");
         return;
     }
@@ -117,7 +117,7 @@ function submitWord() {
     // 통과
     feedback.style.color = "green";
     feedback.innerText = "정답!";
-    usedWords.push(input);
+    usedWords.add(input);
     wordHistory.innerHTML += ` <span style='color:#ccc'>-></span> ${input}`;
 
     currentWord = input;
