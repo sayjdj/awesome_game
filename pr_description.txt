@@ -1,0 +1,9 @@
+🎯 **What:** The testing gap addressed
+Added unit tests for the `showTaunt` function in `common.js` to verify DOM manipulation and proper cleanup behavior. We set up Jest and `jest-environment-jsdom` to support these tests.
+
+📊 **Coverage:** What scenarios are now tested
+1.  **Happy Path / DOM manipulation:** Tested that `showTaunt` properly creates a `div` element, assigns the correct text, inline styles (coordinates, font size, position, animations, etc.), and appends it to the document body.
+2.  **Timing / Cleanup behavior:** Tested that the appended element is removed from the DOM precisely after 1 second (1000 milliseconds) using Jest's fake timers.
+
+✨ **Result:** The improvement in test coverage
+We now have reliable, isolated tests for the global `showTaunt` utility, ensuring that taunt messages are rendered correctly and preventing potential memory leaks from leftover DOM nodes.
