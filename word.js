@@ -1,5 +1,5 @@
 // 간단한 내장 단어장 (3글자 단어)
-const dictionary = [
+const dictionary = new Set([
     "한라산", "한국인", "한가위", "한마음", "한여름", "한반도", "한송이",
     "라디오", "라면집", "라벤더", "라운지", "라이터",
     "산기슭", "산봉우리", "산불조심", "산타클", "산할아버지", "산소통",
@@ -37,7 +37,7 @@ const dictionary = [
     "오븐기", "가스렌", "인덕션", "도마위", "식칼잡", "냄비받", "프라이",
     "국자퍼", "뒤집개", "수저통", "밥그릇", "국그릇", "반찬통", "물컵잔",
     "주전자", "보온병", "믹서기", "커피포", "토스터", "식기세", "정수기"
-];
+]);
 
 const startWords = ["대한민국", "유재석", "바나나", "호랑이", "컴퓨터"];
 let currentWord = startWords[Math.floor(Math.random() * startWords.length)];
@@ -103,7 +103,7 @@ function submitWord() {
     }
 
     // 간단한 사전 검사 (엄격하게 하려면 주석 해제, 현재는 킹받게 하기 위해 대충 통과시켜주는 로직도 가능)
-    if (!dictionary.includes(input)) {
+    if (!dictionary.has(input)) {
         // 사전에 없어도 20% 확률로 킹받게 억지 통과
         if(Math.random() > 0.8) {
             showError("사전에 없는 단어지만... 봐줍니다 ㅋ");
