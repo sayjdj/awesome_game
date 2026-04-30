@@ -72,11 +72,26 @@ function draw() {
 }
 
 function spawnApple() {
-    apple.x = Math.floor(Math.random() * tileCount);
-    apple.y = Math.floor(Math.random() * tileCount);
-    // 뱀 몸통에 겹치지 않게
-    if (snake.some(part => part.x === apple.x && part.y === apple.y)) {
-        spawnApple();
+    const maxTiles = tileCount * tileCount;
+    if (snake.length >= maxTiles) return;
+
+    // Use a boolean array for O(1) lookup
+    const occupied = new Array(maxTiles).fill(false);
+    for (let i = 0; i < snake.length; i++) {
+        occupied[snake[i].y * tileCount + snake[i].x] = true;
+    }
+
+    const availableSpots = [];
+    for (let i = 0; i < maxTiles; i++) {
+        if (!occupied[i]) {
+            availableSpots.push(i);
+        }
+    }
+
+    if (availableSpots.length > 0) {
+        const spotIdx = availableSpots[Math.floor(Math.random() * availableSpots.length)];
+        apple.x = spotIdx % tileCount;
+        apple.y = Math.floor(spotIdx / tileCount);
     }
 }
 
