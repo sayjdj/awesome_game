@@ -36,12 +36,17 @@ function update() {
     }
 
     // 자기 몸 충돌 체크
-    if (snake.slice(1).some(part => part.x === headX && part.y === headY)) {
+    let collision = false;
+    for (let i = 1; i < snake.length; i++) {
+        if (snake[i].x === headX && snake[i].y === headY) {
+            collision = true;
+            break;
+        }
+    }
+    if (collision) {
         gameOver();
         return;
     }
-
-    snake.unshift({x: headX, y: headY});
 
     // 사과 먹기
     if (headX === apple.x && headY === apple.y) {
@@ -49,8 +54,17 @@ function update() {
         scoreElement.innerText = score;
         spawnApple();
         if(score % 30 === 0) shakeScreen();
+        snake.unshift({x: headX, y: headY});
     } else {
-        snake.pop(); // 안 먹었으면 꼬리 자르기
+        // 객체 재사용으로 메모리 할당 방지 (가비지 컬렉션 부하 감소)
+        const tail = snake.pop();
+        if (tail) {
+            tail.x = headX;
+            tail.y = headY;
+            snake.unshift(tail);
+        } else {
+             snake.unshift({x: headX, y: headY});
+        }
     }
 }
 
