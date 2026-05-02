@@ -118,7 +118,8 @@ function submitWord() {
     feedback.style.color = "green";
     feedback.innerText = "정답!";
     usedWords.add(input);
-    wordHistory.innerHTML += ` <span style='color:#ccc'>-></span> ${input}`;
+    // Use insertAdjacentHTML for O(1) DOM appending instead of O(n) innerHTML +=
+    wordHistory.insertAdjacentHTML('beforeend', ` <span style='color:#ccc'>-></span> ${input}`);
 
     currentWord = input;
     wordInput.value = "";
