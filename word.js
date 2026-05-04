@@ -118,7 +118,8 @@ function submitWord() {
     feedback.style.color = "green";
     feedback.innerText = "정답!";
     usedWords.add(input);
-    wordHistory.innerHTML += ` <span style='color:#ccc'>-></span> ${input}`;
+    // insertAdjacentHTML avoids re-parsing the entire DOM node contents, preventing O(n²) performance degradation
+    wordHistory.insertAdjacentHTML('beforeend', ` <span style='color:#ccc'>-></span> ${input}`);
 
     currentWord = input;
     wordInput.value = "";
