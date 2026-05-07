@@ -4,3 +4,6 @@
 ## 2026-05-02 - DOM innerHTML Appending
 **Learning:** In legacy frontend codebases like this one, appending history (e.g., word history) using `element.innerHTML += string` is a common anti-pattern that serializes, tears down, and re-parses the entire DOM tree for that element on every append, causing an O(n) layout calculation spike as the history grows.
 **Action:** Replace `element.innerHTML +=` with `element.insertAdjacentHTML('beforeend', string)` to achieve O(1) appending without disturbing existing child nodes.
+## 2024-05-24 - Layout Thrashing Avoidance
+**Learning:** Frequent reads of layout properties (e.g. `offsetWidth`, `innerWidth`) and synchronous writes to layout properties (`style.left`, `style.top`) in high-frequency event handlers (like `mouseover`) causes layout thrashing, recalculating the layout repeatedly, leading to dropped frames and stutter.
+**Action:** Always prefer caching these layout dimensions, and use `style.transform` to move elements. Moving elements using `transform` is processed by the GPU and avoids triggering expensive layout recalculations.
