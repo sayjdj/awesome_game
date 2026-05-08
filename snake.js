@@ -12,7 +12,9 @@ let snake = [{x: 10, y: 10}];
 let velocity = {x: 0, y: 0};
 let apple = {x: 15, y: 15};
 let score = 0;
-let gameInterval;
+let animationFrameId;
+let lastRenderTime = 0;
+const GAME_SPEED = 150; // ms
 let controlMode = "normal"; // normal, reverse, random
 let modeInterval;
 
@@ -20,7 +22,19 @@ const taunts = [
     "방향키가 왜 이래? ㅋㅋ", "어딜 가시나~", "거꾸로 가는 중!", "마음대로 안 되지?", "아이고 답답해라"
 ];
 
-function gameLoop() {
+// [Bolt Optimization]: Replaced setInterval with requestAnimationFrame
+// 🎯 Why: setInterval does not sync with browser repaints and runs even when the tab is inactive, causing battery drain and potential stuttering. requestAnimationFrame synchronizes with the display refresh rate for smoother rendering and pauses in background tabs.
+// 📊 Impact: Smoother gameplay, eliminated potential tearing, and significantly reduced CPU usage when the tab is in the background.
+function gameLoop(currentTime) {
+    animationFrameId = requestAnimationFrame(gameLoop);
+
+    if (!lastRenderTime) lastRenderTime = currentTime;
+
+    if (currentTime - lastRenderTime < GAME_SPEED) {
+        return;
+    }
+    lastRenderTime = currentTime;
+
     update();
     draw();
 }
@@ -114,7 +128,7 @@ function spawnApple() {
 }
 
 function gameOver() {
-    clearInterval(gameInterval);
+    cancelAnimationFrame(animationFrameId);
     clearInterval(modeInterval);
     shakeScreen();
     finalScoreElement.innerText = score;
@@ -185,7 +199,7 @@ window.addEventListener("keydown", (e) => {
 // 게임 시작
 function initGame() {
     spawnApple();
-    gameInterval = setInterval(gameLoop, 150); // 속도
+    animationFrameId = requestAnimationFrame(gameLoop);
     // 7초마다 조작법 변경
     modeInterval = setInterval(changeControlMode, 7000);
 }
