@@ -7,3 +7,6 @@
 ## 2024-05-24 - Layout Thrashing Avoidance
 **Learning:** Frequent reads of layout properties (e.g. `offsetWidth`, `innerWidth`) and synchronous writes to layout properties (`style.left`, `style.top`) in high-frequency event handlers (like `mouseover`) causes layout thrashing, recalculating the layout repeatedly, leading to dropped frames and stutter.
 **Action:** Always prefer caching these layout dimensions, and use `style.transform` to move elements. Moving elements using `transform` is processed by the GPU and avoids triggering expensive layout recalculations.
+## 2024-05-24 - Game Loop requestAnimationFrame
+**Learning:** Using `setInterval` for canvas game loops causes stuttering because it doesn't synchronize with the browser's display refresh rate and continues running when the tab is inactive, wasting battery and CPU.
+**Action:** Replace `setInterval` with `requestAnimationFrame` and track `lastRenderTime` to maintain the desired game speed (e.g. 150ms) while gaining smoother frame rendering and background resource optimization.
