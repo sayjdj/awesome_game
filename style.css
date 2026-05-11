@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+/* [Bolt Optimization]: Removed @import to prevent render-blocking request chains. Use <link> in HTML instead. */
+/* 🎯 Why: @import blocks parallel downloads (HTML -> CSS -> Font). */
 
 * {
     box-sizing: border-box;
