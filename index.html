@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>킹받는 게임 모음집</title>
+    <!-- [Bolt Optimization]: Loading external fonts directly via link tags in HTML instead of @import in CSS. -->
+    <!-- 🎯 Why: Using @import in CSS causes a render-blocking request chain (HTML -> CSS -> Font CSS -> Font). Putting links directly in HTML allows the browser's preload scanner to discover and fetch the fonts immediately alongside the CSS. -->
+    <!-- 📊 Impact: Significantly reduces the Critical Rendering Path time and First Contentful Paint (FCP) by parallelizing network requests. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script defer src="common.js"></script>
 </head>
