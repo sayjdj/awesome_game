@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+/* [Bolt Optimization]: Moved font requests to HTML to avoid serial request chains and reduce LCP time.
+   🎯 Why: @import within CSS causes the browser to wait for the CSS file to download and parse before it even starts downloading the font, delaying the text rendering.
+   📊 Impact: Improves Largest Contentful Paint (LCP) by parallelizing resource loading. */
 
 * {
     box-sizing: border-box;
