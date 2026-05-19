@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>킹받는 게임 모음집</title>
+    <!-- [Bolt Optimization]: Loaded Google Fonts via <link> instead of CSS @import -->
+    <!-- 💡 Why: @import inside CSS creates a sequential request chain (HTML -> CSS -> Font CSS), which delays rendering. Using <link> allows the browser to discover and download the font stylesheet in parallel with the main CSS. -->
+    <!-- 📊 Impact: Faster First Contentful Paint (FCP) and prevents render-blocking delays. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script defer src="common.js"></script>
 </head>

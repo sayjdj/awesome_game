@@ -10,3 +10,6 @@
 ## 2024-05-24 - Game Loop requestAnimationFrame
 **Learning:** Using `setInterval` for canvas game loops causes stuttering because it doesn't synchronize with the browser's display refresh rate and continues running when the tab is inactive, wasting battery and CPU.
 **Action:** Replace `setInterval` with `requestAnimationFrame` and track `lastRenderTime` to maintain the desired game speed (e.g. 150ms) while gaining smoother frame rendering and background resource optimization.
+## 2024-05-24 - Playwright and External Fonts
+**Learning:** In the Playwright verification environment, external resources like Google Fonts (`fonts.googleapis.com`) can cause `page.goto` to timeout and block script execution.
+**Action:** Use `page.route` to abort requests to external font domains, or use `wait_until='commit'` in Playwright scripts when verifying visual components that do not strictly require external fonts to load fully, ensuring tests run reliably.
