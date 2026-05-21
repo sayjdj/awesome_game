@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>끝에서 앞말 잇기</title>
+    <!-- [Bolt Optimization]: Replaced CSS @import with HTML <link> for font loading -->
+    <!-- 🎯 Why: @import in CSS blocks rendering and delays font downloading because the browser must download and parse the CSS file before discovering the font URL. -->
+    <!-- 📊 Impact: Eliminates sequential request chains, parallelizes asset downloading, and significantly speeds up the First Contentful Paint (FCP). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script defer src="common.js"></script>
     <script defer src="word.js"></script>
