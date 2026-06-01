@@ -10,3 +10,6 @@
 ## 2024-05-24 - Game Loop requestAnimationFrame
 **Learning:** Using `setInterval` for canvas game loops causes stuttering because it doesn't synchronize with the browser's display refresh rate and continues running when the tab is inactive, wasting battery and CPU.
 **Action:** Replace `setInterval` with `requestAnimationFrame` and track `lastRenderTime` to maintain the desired game speed (e.g. 150ms) while gaining smoother frame rendering and background resource optimization.
+## 2024-05-24 - CSS @import Render-Blocking
+**Learning:** In frontend performance, loading Google Fonts via `@import url(...)` in a CSS file creates a severe render-blocking request chain. The browser must fully download and parse the CSS file before it even discovers the font URL, delaying the start of the font download and worsening First Contentful Paint (FCP).
+**Action:** Always load external assets like Google Fonts via `<link rel="preconnect">` and `<link rel="stylesheet">` tags directly in the HTML `<head>`. This allows the browser's preload scanner to discover and fetch the fonts in parallel with the CSS.
