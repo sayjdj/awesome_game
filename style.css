@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+/* [Bolt Optimization]: Removed @import for Google Fonts, moved to <link> tags in HTML */
+/* 💡 Why: @import within a stylesheet blocks the browser from discovering the font resource until the CSS is downloaded and parsed, creating a sequential loading chain. Using <link rel="preconnect"> and <link rel="stylesheet"> in the HTML <head> allows parallel downloading. */
+/* 📊 Impact: Eliminates a render-blocking request chain, improving First Contentful Paint (FCP) and reducing layout shift on initial load. */
 
 * {
     box-sizing: border-box;
