@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>끝에서 앞말 잇기</title>
+    <!-- [Bolt Optimization]: Moved Google Fonts from @import in CSS to <link> tags in HTML -->
+    <!-- 💡 Why: @import inside CSS creates a sequential render-blocking request chain (HTML -> CSS -> Font). Using <link> tags allows the browser to discover and download the font in parallel with the CSS. -->
+    <!-- 📊 Impact: Faster First Contentful Paint (FCP) and eliminated network waterfall delays. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script defer src="common.js"></script>
     <script defer src="word.js"></script>
