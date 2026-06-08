@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+/* [Bolt Optimization]: Removed @import to prevent render-blocking request chains. Fonts are now loaded via <link rel="preconnect"> and <link rel="stylesheet"> tags directly in HTML.
+   🎯 Why: @import inside CSS creates sequential requests (HTML -> CSS -> Font). Moving them to HTML allows parallel fetching.
+   📊 Impact: Faster First Contentful Paint (FCP). */
 
 * {
     box-sizing: border-box;
