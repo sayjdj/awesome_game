@@ -10,3 +10,6 @@
 ## 2024-05-24 - Game Loop requestAnimationFrame
 **Learning:** Using `setInterval` for canvas game loops causes stuttering because it doesn't synchronize with the browser's display refresh rate and continues running when the tab is inactive, wasting battery and CPU.
 **Action:** Replace `setInterval` with `requestAnimationFrame` and track `lastRenderTime` to maintain the desired game speed (e.g. 150ms) while gaining smoother frame rendering and background resource optimization.
+## 2024-05-24 - Playwright Verification Wait States
+**Learning:** In the verification environment, `page.wait_for_load_state('networkidle')` can be used to ensure the page has fully loaded all resources before taking screenshots or continuing with the verification script, resulting in more reliable verification images.
+**Action:** Always include appropriate wait states (like networkidle) in Playwright verification scripts before taking screenshots to ensure complete rendering.
