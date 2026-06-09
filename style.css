@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+/* [Bolt Optimization]: Removed @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap'); */
+/* 💡 Why: @import creates a request chain (HTML -> CSS -> Font) delaying rendering. Fonts are now loaded via <link> in HTML for parallel fetching. */
+/* 📊 Impact: Faster First Contentful Paint (FCP) and smoother initial load. */
 
 * {
     box-sizing: border-box;
