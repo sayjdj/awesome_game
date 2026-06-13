@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+/*
+ * [Bolt Optimization] Font Loading
+ * 🎯 Why: @import in CSS blocks parallel downloads of stylesheets, delaying the discovery of the font and increasing the First Contentful Paint time.
+ * 📊 Impact: Moving font loading to HTML <link> tags enables browser preconnection and parallel downloading, making the page load faster.
+ */
 
 * {
     box-sizing: border-box;
