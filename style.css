@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+/* [Bolt Optimization]: Removed @import for Google Fonts */
+/* 💡 Why: @import causes a sequential network request chain. The font is now loaded directly in HTML via <link> to parallelize downloads and improve First Contentful Paint. */
+/* 📊 Impact: Significantly improves FCP by parallelizing network requests. */
 
 * {
     box-sizing: border-box;
