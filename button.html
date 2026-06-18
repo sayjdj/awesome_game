@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>도망가는 버튼</title>
+    <!-- [Bolt Optimization]: Moved Google Fonts loading from CSS @import to HTML <link> -->
+    <!-- 💡 Why: @import in CSS creates a sequential render-blocking request chain (HTML -> CSS -> Font). Loading via <link preconnect> in HTML allows parallel downloading. -->
+    <!-- 📊 Impact: Significantly reduces Largest Contentful Paint (LCP) time and eliminates text flashing during initial page load. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script defer src="common.js"></script>
     <script defer src="button.js"></script>
