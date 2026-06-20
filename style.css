@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+/* [Bolt Optimization]: Moved Google Fonts @import to <link> tags in HTML files
+   💡 Why: @import inside CSS creates a render-blocking request chain (HTML -> CSS -> Font), delaying text rendering.
+   📊 Impact: Speeds up First Contentful Paint (FCP) and reduces layout shifts by loading fonts in parallel with CSS. */
 
 * {
     box-sizing: border-box;
