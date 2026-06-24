@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>청개구리 뱀 게임</title>
+    <!-- [Bolt Optimization]: Loading Google Fonts via link tags in HTML instead of @import in CSS -->
+    <!-- 🎯 Why: @import in CSS causes render-blocking request chains (HTML -> CSS -> Font). -->
+    <!-- 📊 Impact: Improves First Contentful Paint (FCP) and reduces layout shifts. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script defer src="common.js"></script>
     <script defer src="snake.js"></script>
