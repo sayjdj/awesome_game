@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>도망가는 버튼</title>
+    <!-- [Bolt Optimization]: Moved Google Fonts from @import in CSS to <link> tags in HTML -->
+    <!-- 💡 Why: @import in CSS blocks the browser from downloading the font until the CSS file itself is downloaded and parsed, creating a render-blocking request chain. Using <link preconnect> and <link stylesheet> allows the browser to discover and download the font much earlier in parallel. -->
+    <!-- 📊 Impact: Significantly improves First Contentful Paint (FCP) and eliminates the render-blocking request chain. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script defer src="common.js"></script>
     <script defer src="button.js"></script>
