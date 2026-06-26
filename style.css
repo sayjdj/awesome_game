@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+/* [Bolt Optimization]: Removed @import for fonts to prevent render-blocking request chain. See HTML <head> for <link> tags. */
 
 * {
     box-sizing: border-box;
