@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>청개구리 뱀 게임</title>
+    <!-- [Bolt Optimization]: Moved Google Fonts loading from CSS @import to HTML <link> tags -->
+    <!-- 💡 Why: Using @import in CSS causes a render-blocking request chain. Loading via <link rel="preconnect"> and <link rel="stylesheet"> in the HTML head allows parallel downloading. -->
+    <!-- 📊 Impact: Measurably reduces the First Contentful Paint (FCP) time and prevents text flashing/layout shifts. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script defer src="common.js"></script>
     <script defer src="snake.js"></script>
