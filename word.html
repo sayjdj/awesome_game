@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>끝에서 앞말 잇기</title>
+    <!-- [Bolt Optimization] Preconnect for Google Fonts -->
+    <!-- 💡 Why: Using @import in CSS causes a render-blocking request chain. Putting it in HTML allows parallel downloading. -->
+    <!-- 📊 Impact: Faster first contentful paint (FCP) and prevents font rendering delays. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script defer src="common.js"></script>
     <script defer src="word.js"></script>
